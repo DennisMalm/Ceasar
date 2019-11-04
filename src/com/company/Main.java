@@ -8,7 +8,7 @@ public class Main {
 
     char letters[] = {'a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'i', 'j', 'k', 'l', 'm', 'n', 'o', 'p', 'q', 'r', 's', 't', 'u', 'v', 'w', 'x', 'y', 'z'};
     char specialChar[] = {' ', '!', '.', '?', ','};
-    int randomShift[] = {1, 9, 3, 5, 7, 2, 8, 4, 6, 0};
+    int randomShift[] = {1, 2, 3};
 
     /**
      *
@@ -23,6 +23,8 @@ public class Main {
         System.out.println("Skriv ditt krypteringsvärde: ");
         int krypteringstal = read.nextInt();
         new Main(message, krypteringstal, 2);
+
+        new CipherC(message);
     }
 
     /**
@@ -55,6 +57,8 @@ public class Main {
         char[] charArray = input.toCharArray();
         String output = "";
         for (int i = 0; i != charArray.length; i++) {
+
+
             if (Character.isUpperCase(charArray[i])) {
                 output += Character.toUpperCase(calcShift(getIndex(charArray[i]), shift));
             } else {
@@ -85,6 +89,18 @@ public class Main {
         }
         return 999;
     }
+    //int randomizeShift(int i){
+        // get index
+     //   int shift;
+     //   if(randomShift[i] > randomShift.length){
+         //   shift = randomShift[i];
+       // }
+       // else if (randomShift[i] < randomShift.length){
+       //     shift = randomShift[0 + i];
+       // }
+       // shift = randomShift[i];
+       // return shift;
+    //}
 
     /**
      *
@@ -94,6 +110,7 @@ public class Main {
      */
     char calcShift(int index, int shift) {
 
+        // Använd randomshift
         if (index >= 50 && index < 999) {
             return specialChar[index - 50];
         }
