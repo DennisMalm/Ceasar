@@ -16,14 +16,15 @@ public class Main {
      * @throws InterruptedException
      */
     public static void main(String[] args) throws InterruptedException {
+        Scanner read = new Scanner(System.in);
 
         System.out.print("Skriv in den text du vill kryptera: ");
-        Scanner read = new Scanner(System.in);
         String message = read.nextLine();
+
         System.out.println("Skriv ditt krypteringsvärde: ");
         int krypteringstal = read.nextInt();
-        new Main(message, krypteringstal, 2);
 
+        new Main(message, krypteringstal, 2);
         new CipherC(message);
     }
 
@@ -35,7 +36,7 @@ public class Main {
      * @throws InterruptedException
      */
     public Main(String input, int shift, int timeout) throws InterruptedException {
-        timeout *= 1000;
+        timeout *= 10;
         String output = cipherThis(input, shift);
         System.out.println(output);
         System.out.println("");
@@ -56,9 +57,8 @@ public class Main {
     String cipherThis(String input, int shift) {
         char[] charArray = input.toCharArray();
         String output = "";
+
         for (int i = 0; i != charArray.length; i++) {
-
-
             if (Character.isUpperCase(charArray[i])) {
                 output += Character.toUpperCase(calcShift(getIndex(charArray[i]), shift));
             } else {
